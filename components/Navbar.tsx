@@ -46,6 +46,12 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
             <Link href="/items" className={`hover:text-yellow-300 ${pathname === '/items' ? 'text-yellow-300' : ''}`}>
               Menu
             </Link>
+            <Link href="/about" className={`hover:text-yellow-300 ${pathname === '/about' ? 'text-yellow-300' : ''}`}>
+              About
+            </Link>
+            <Link href="/contact" className={`hover:text-yellow-300 ${pathname === '/contact' ? 'text-yellow-300' : ''}`}>
+              Contact
+            </Link>
             {isLoggedIn ? (
               <>
                 <Link href="/add-item" className={`hover:text-yellow-300 ${pathname === '/add-item' ? 'text-yellow-300' : ''}`}>
@@ -75,6 +81,8 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
           <div className="md:hidden pb-4 space-y-2">
             <Link href="/" className="block py-2 hover:text-yellow-300">Home</Link>
             <Link href="/items" className="block py-2 hover:text-yellow-300">Menu</Link>
+            <Link href="/about" className="block py-2 hover:text-yellow-300">About</Link>
+            <Link href="/contact" className="block py-2 hover:text-yellow-300">Contact</Link>
             {isLoggedIn ? (
               <>
                 <Link href="/add-item" className="block py-2 hover:text-yellow-300">Add Item</Link>

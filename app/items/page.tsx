@@ -24,7 +24,7 @@ export default async function ItemsPage() {
   const items = await getItems();
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-12 bg-white">
       <h1 className="text-4xl font-bold text-center mb-12">Our Menu</h1>
       
       {items.length === 0 ? (
@@ -35,28 +35,29 @@ export default async function ItemsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item) => (
-            <Link href={`/items/${item.id}`} key={item.id}>
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer">
-                <div className="relative h-48 bg-gray-200">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h2 className="text-xl font-bold">{item.name}</h2>
-                    <span className="text-red-600 font-bold text-lg">${item.price}</span>
-                  </div>
-                  <p className="text-gray-600 mb-3">{item.description}</p>
-                  <span className="inline-block bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
-                    {item.category}
-                  </span>
-                </div>
+            <div key={item.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
+              <div className="relative h-48 bg-gray-200">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </Link>
+              <div className="p-6 flex flex-col">
+                <div className="flex justify-between items-start mb-2">
+                  <h2 className="text-xl text-black font-bold">{item.name}</h2>
+                  <span className="text-red-600 font-bold text-lg">${item.price}</span>
+                </div>
+                <p className="text-black mb-3 flex-grow">{item.description}</p>
+                <span className="inline-block bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm mb-4 w-fit">
+                  {item.category}
+                </span>
+                <Link href={`/items/${item.id}`} className="w-full bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition text-center">
+                  View Details
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
       )}

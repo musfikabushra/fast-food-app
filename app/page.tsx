@@ -1,142 +1,8 @@
-// import Link from 'next/link';
-// import Image from 'next/image';
-
-// export default function Home() {
-//   return (
-//     <div>
-//       {/* Hero Section */}
-//       <section className="bg-gradient-to-r from-red-600 to-orange-500 text-white py-20">
-//         <div className="container mx-auto px-4 text-center">
-//           <h1 className="text-5xl md:text-6xl font-bold mb-6">Welcome to FastFood</h1>
-//           <p className="text-xl md:text-2xl mb-8">Delicious meals delivered to your doorstep in minutes!</p>
-//           <Link href="/items" className="bg-yellow-400 text-red-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-300 inline-block">
-//             Order Now
-//           </Link>
-//         </div>
-//       </section>
-
-//       {/* About Section */}
-//       <section className="py-16 bg-white">
-//         <div className="container mx-auto px-4">
-//           <h2 className="text-4xl font-bold text-center mb-12">About Us</h2>
-//           <div className="max-w-3xl mx-auto text-center">
-//             <p className="text-lg text-gray-700 mb-4">
-//               FastFood has been serving delicious, quality meals since 2020. We pride ourselves on using fresh ingredients 
-//               and providing exceptional service to our customers.
-//             </p>
-//             <p className="text-lg text-gray-700">
-//               Our mission is to bring joy to every meal with our carefully crafted menu items and fast delivery service.
-//             </p>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Featured Items Section */}
-//       <section className="py-16 bg-gray-50">
-//         <div className="container mx-auto px-4">
-//           <h2 className="text-4xl font-bold text-center mb-12">Featured Items</h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             {[
-//               { name: 'Classic Burger', emoji: '🍔', desc: 'Our signature burger' },
-//               { name: 'Cheese Pizza', emoji: '🍕', desc: 'Hand-tossed perfection' },
-//               { name: 'Crispy Fries', emoji: '🍟', desc: 'Golden and delicious' }
-//             ].map((item, idx) => (
-//               <div key={idx} className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition">
-//                 <div className="text-6xl mb-4">{item.emoji}</div>
-//                 <h3 className="text-2xl font-bold mb-2">{item.name}</h3>
-//                 <p className="text-gray-600">{item.desc}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Why Choose Us Section */}
-//       <section className="py-16 bg-white">
-//         <div className="container mx-auto px-4">
-//           <h2 className="text-4xl font-bold text-center mb-12">Why Choose Us</h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             <div className="text-center">
-//               <div className="text-5xl mb-4">⚡</div>
-//               <h3 className="text-xl font-bold mb-2">Fast Delivery</h3>
-//               <p className="text-gray-600">Get your food in 30 minutes or less</p>
-//             </div>
-//             <div className="text-center">
-//               <div className="text-5xl mb-4">🌟</div>
-//               <h3 className="text-xl font-bold mb-2">Quality Food</h3>
-//               <p className="text-gray-600">Fresh ingredients, amazing taste</p>
-//             </div>
-//             <div className="text-center">
-//               <div className="text-5xl mb-4">💰</div>
-//               <h3 className="text-xl font-bold mb-2">Great Prices</h3>
-//               <p className="text-gray-600">Affordable meals for everyone</p>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Menu Categories Section */}
-//       <section className="py-16 bg-gray-50">
-//         <div className="container mx-auto px-4">
-//           <h2 className="text-4xl font-bold text-center mb-12">Our Menu Categories</h2>
-//           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-//             {[
-//               { name: 'Burgers', emoji: '🍔' },
-//               { name: 'Pizza', emoji: '🍕' },
-//               { name: 'Chicken', emoji: '🍗' },
-//               { name: 'Sides', emoji: '🍟' },
-//               { name: 'Wraps', emoji: '🌯' },
-//               { name: 'Drinks', emoji: '🥤' },
-//               { name: 'Desserts', emoji: '🍰' },
-//               { name: 'Salads', emoji: '🥗' }
-//             ].map((cat, idx) => (
-//               <div key={idx} className="bg-white p-6 rounded-lg shadow text-center hover:shadow-lg transition">
-//                 <div className="text-4xl mb-2">{cat.emoji}</div>
-//                 <p className="font-semibold">{cat.name}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Testimonials Section */}
-//       <section className="py-16 bg-white">
-//         <div className="container mx-auto px-4">
-//           <h2 className="text-4xl font-bold text-center mb-12">What Our Customers Say</h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             {[
-//               { name: 'John D.', text: 'Best burgers in town! Fast delivery and always hot.', rating: 5 },
-//               { name: 'Sarah M.', text: 'Love the variety of options. Great quality food!', rating: 5 },
-//               { name: 'Mike R.', text: 'Affordable prices and delicious meals. Highly recommend!', rating: 5 }
-//             ].map((review, idx) => (
-//               <div key={idx} className="bg-gray-50 p-6 rounded-lg shadow">
-//                 <div className="text-yellow-400 mb-2">{'⭐'.repeat(review.rating)}</div>
-//                 <p className="text-gray-700 mb-4">"{review.text}"</p>
-//                 <p className="font-bold">- {review.name}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Call to Action Section */}
-//       <section className="py-16 bg-gradient-to-r from-orange-500 to-red-600 text-white">
-//         <div className="container mx-auto px-4 text-center">
-//           <h2 className="text-4xl font-bold mb-6">Ready to Order?</h2>
-//           <p className="text-xl mb-8">Browse our full menu and get your favorite meals delivered now!</p>
-//           <Link href="/items" className="bg-yellow-400 text-red-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-300 inline-block">
-//             View Full Menu
-//           </Link>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
-
-'use client'; // Required for Framer Motion
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -150,12 +16,46 @@ const staggerContainer = {
   whileInView: { transition: { staggerChildren: 0.1 } }
 };
 
+const chefs = [
+  {
+    name: 'David Liam',
+    role: 'CEO',
+    image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&q=80',
+  },
+  {
+    name: 'Alex Mika',
+    role: 'Executive Chef',
+    image: 'https://images.unsplash.com/photo-1595273670150-db0a3d39074c?w=500&q=80',
+  },
+  {
+    name: 'John Smith',
+    role: 'Executive Chef',
+    image: 'https://images.unsplash.com/photo-1577214714282-3e45380735e5?w=500&q=80',
+  },
+];
+
 export default function Home() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 1435,
+    hours: 11,
+    minutes: 38,
+    seconds: 20,
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        return prev; 
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div className="overflow-hidden font-sans text-slate-900">
       
       {/* Hero Section - Dynamic Background */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden ">
         <Image 
           src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070"
           alt="Hero Background"
@@ -249,6 +149,164 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <section className="relative bg-[#0a0a0a] min-h-[500px] flex items-center overflow-hidden py-20">
+      {/* ব্যাকগ্রাউন্ড টেক্সচার বা ডার্ক ইমেজ */}
+      <div className="absolute inset-0 opacity-40">
+        <Image 
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80" 
+          alt="background" 
+          fill 
+          className="object-cover"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          
+          {/* টেক্সট এবং টাইমার পার্ট */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="md:w-1/2 text-white"
+          >
+            <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 leading-none">
+              Get <span className="text-red-600">25%</span> <br /> Discount
+            </h2>
+
+            {/* টাইমার গ্রিড */}
+            <div className="flex gap-4 mb-10">
+              {[
+                { label: 'Days', value: timeLeft.days },
+                { label: 'Hours', value: timeLeft.hours },
+                { label: 'Min', value: timeLeft.minutes },
+                { label: 'Sec', value: timeLeft.seconds },
+              ].map((unit, i) => (
+                <div key={i} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 min-w-[80px] text-center">
+                  <span className="block text-3xl font-black leading-none mb-1">
+                    {String(unit.value).padStart(2, '0')}
+                  </span>
+                  <span className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">
+                    {unit.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-red-600 text-white px-10 py-4 rounded-xl font-black uppercase italic tracking-widest hover:bg-white hover:text-red-600 transition-all duration-300 shadow-xl shadow-red-600/20"
+            >
+              Read More
+            </motion.button>
+          </motion.div>
+
+          {/* খাবার এবং প্রাইস বাবল পার্ট */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            className="md:w-1/2 relative flex justify-center items-center"
+          >
+            {/* প্রাইস বাবল (Badge) */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 3 }}
+              className="absolute -top-10 right-10 md:right-20 z-20 bg-yellow-400 text-black w-24 h-24 rounded-full border-4 border-dashed border-black flex flex-col items-center justify-center font-black rotate-12"
+            >
+              <span className="text-[10px] uppercase">Special Price</span>
+              <span className="text-xl">$10.99</span>
+            </motion.div>
+
+            {/* মেইন ইমেজ (Burger/Combo) */}
+            <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px]">
+              <Image 
+                src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&q=80" 
+                alt="Featured Combo"
+                fill
+                className="object-contain drop-shadow-[0_35px_35px_rgba(255,0,0,0.3)]"
+              />
+            </div>
+
+            {/* ডেকোরেটিভ ফ্রাইস বা অন্য এলিমেন্ট */}
+            <div className="absolute -right-10 top-20 hidden lg:block opacity-80 rotate-45">
+              <Image src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&q=80" width={150} height={150} alt="fries" className="object-contain" />
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+
+      {/* Chef section */}
+
+      <section className="py-24 bg-white">
+      <div className="container mx-auto px-4">
+        
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mb-4"
+          >
+            <span className="text-yellow-500 text-xl">👨‍🍳</span>
+            <span className="text-yellow-500 font-bold uppercase tracking-[0.2em] text-sm">
+              Our Special Chefs
+            </span>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none"
+          >
+            Introducing Our Culinary <br /> Masters
+          </motion.h2>
+        </div>
+
+        {/* Chefs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {chefs.map((chef, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              className="relative group overflow-hidden bg-gray-100 rounded-xl shadow-md"
+            >
+              {/* Image Wrapper */}
+              <div className="relative h-[450px] w-full transition-transform duration-500 group-hover:scale-105">
+                <Image
+                  src={chef.image}
+                  alt={chef.name}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+
+              {/* Info Overlay (Visible on bottom like the image) */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] bg-white p-6 rounded-lg text-center shadow-xl transition-all duration-300 group-hover:bg-red-600">
+                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight group-hover:text-white transition-colors">
+                  {chef.name}
+                </h3>
+                <p className="text-gray-500 font-semibold uppercase text-xs tracking-widest mt-1 group-hover:text-yellow-400 transition-colors">
+                  {chef.role}
+                </p>
+              </div>
+
+              {/* Red Hover Accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
 
       {/* Why Choose Us - Icon Grid */}
       <section className="py-24 bg-red-600 text-white">
