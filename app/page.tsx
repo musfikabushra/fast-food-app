@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Utensils, ChefHat, ArrowRight } from 'lucide-react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -55,64 +56,193 @@ export default function Home() {
     <div className="overflow-hidden font-sans text-slate-900">
       
       {/* Hero Section - Dynamic Background */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden ">
-        <Image 
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070"
-          alt="Hero Background"
-          fill
-          className="object-cover opacity-60 scale-105 animate-slow-zoom"
-          priority
-        />
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-6xl md:text-8xl font-black text-white mb-6 drop-shadow-2xl italic uppercase tracking-tighter"
-          >
-            Welcome to <span className="text-yellow-400">FastFood</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-xl md:text-3xl text-gray-100 mb-10 font-medium max-w-2xl mx-auto"
-          >
-            Delicious meals delivered to your doorstep in <span className="underline decoration-yellow-400">minutes!</span>
-          </motion.p>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            <Link href="/items" className="bg-red-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-red-700 transition shadow-2xl inline-block">
-              🔥 Order Now
+   <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-black">
+      
+      {/* Dynamic Background with Ken Burns Effect */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.15 }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear"
+          }}
+          className="relative w-full h-full"
+        >
+          <Image 
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=2070"
+            alt="Hero Background"
+            fill
+            className="object-cover opacity-50"
+            priority
+          />
+        </motion.div>
+        {/* Deep Overlay for Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black" />
+      </div>
+
+      {/* Floating Decorative Elements (Foodie Vibe) */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
+        <motion.div 
+          animate={{ y: [0, -30, 0], rotate: [0, 10, 0] }}
+          transition={{ duration: 6, repeat: Infinity }}
+          className="absolute top-[20%] left-[10%] text-7xl opacity-40 blur-[1px]"
+        >
+          🍕
+        </motion.div>
+        <motion.div 
+          animate={{ y: [0, 40, 0], rotate: [0, -15, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute bottom-[20%] right-[10%] text-8xl opacity-30 blur-[2px]"
+        >
+          🍔
+        </motion.div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        
+        {/* Floating Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-yellow-400 text-sm font-bold uppercase tracking-widest mb-8"
+        >
+          <ChefHat size={18} />
+          The Best Flavors in Town
+        </motion.div>
+
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-6xl  font-black text-white mb-6 drop-shadow-2xl italic uppercase tracking-tighter leading-[0.9]"
+        >
+          CRAVE <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600">
+             FASTFOOD
+          </span>
+        </motion.h1>
+
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="text-xl md:text-3xl text-gray-200 mb-12 font-medium max-w-3xl mx-auto leading-tight"
+        >
+          Savor the crunch, feel the heat, and enjoy 
+          <span className="text-white font-bold italic"> world-class </span> 
+          meals delivered in <span className="text-yellow-400 border-b-4 border-yellow-400/30">20 minutes.</span>
+        </motion.p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link 
+              href="/items" 
+              className="group bg-red-600 text-white px-4 py-4 rounded-2xl text-2xl font-black hover:bg-white hover:text-red-600 transition-all shadow-[0_20px_50px_rgba(220,38,38,0.3)] inline-flex items-center gap-3 uppercase tracking-wider"
+            >
+              Order Now
+              <ArrowRight className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </motion.div>
-        </div>
-      </section>
 
-      {/* About Section - Split Layout */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <motion.div {...fadeInUp} className="md:w-1/2">
-              <div className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl transform -rotate-3">
-                <Image 
-                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1974"
-                  alt="Chef cooking"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-            <motion.div {...fadeInUp} className="md:w-1/2">
-              <h2 className="text-5xl font-black mb-8 border-l-8 border-red-600 pl-6 uppercase">Our Story</h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                Since 2020, <span className="font-bold text-red-600">FastFood</span> has been more than just a kitchen. We are a hub for foodies who crave quality without the wait.
-              </p>
-              <p className="text-xl text-gray-600 leading-relaxed italic">
-                "Fresh ingredients aren't an option; they're our obsession."
-              </p>
-            </motion.div>
-          </div>
+          {/* <motion.div whileHover={{ scale: 1.05 }}>
+            <Link 
+              href="/about" 
+              className="text-white border-2 border-white/30 hover:border-white px-10 py-6 rounded-2xl text-xl font-bold backdrop-blur-sm transition-all inline-block"
+            >
+              View Menu
+            </Link>
+          </motion.div> */}
         </div>
-      </section>
+      </div>
+
+      {/* Bottom Scroll Indicator */}
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30"
+      >
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+          <div className="w-1 h-2 bg-yellow-400 rounded-full" />
+        </div>
+      </motion.div>
+    </section>
+
+
+{/* Another section*/}
+      <section className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          
+          {/* Left Side: Image with Slide-in from Left */}
+          <motion.div 
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="lg:w-1/2 relative"
+          >
+            <div className="relative w-full aspect-square max-w-[600px] mx-auto">
+              {/* Background paint splash effect can be a PNG or CSS blob */}
+              <div className="absolute inset-0 bg-orange-100 rounded-full blur-3xl opacity-50 scale-110" />
+              <Image 
+                src="https://wordpress.themehour.net/barab/wp-content/uploads/2025/07/about_1_1.png" 
+                alt="Fried Chicken"
+                fill
+                className="object-contain relative z-10 drop-shadow-2xl"
+              />
+            </div>
+          </motion.div>
+
+          {/* Right Side: Content with Slide-in from Right */}
+          <motion.div 
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="lg:w-1/2 space-y-6"
+          >
+            <div className="flex items-center gap-2 text-yellow-500 font-bold uppercase tracking-widest text-sm">
+              <span className="text-xl">🔔</span> ABOUT US
+            </div>
+            
+            <h2 className="text-5xl  font-black text-slate-900 uppercase tracking-tighter leading-tight">
+              Delicia&apos;s About Fresh <br /> Flavorful Dining
+            </h2>
+            
+            <p className="text-gray-500 text-lg leading-relaxed">
+              We are passionate about serving fresh, flavorful dishes crafted with the finest ingredients. Every meal is thoughtfully prepared to deliver a memorable dining experience you&apos;ll love.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+              {/* Stats Cards */}
+              <div className="bg-gray-50 p-6 rounded-2xl flex items-center gap-4 border border-gray-100">
+                <div className="text-4xl">🍔</div>
+                <div>
+                  <h4 className="text-2xl font-black text-slate-900">1500+</h4>
+                  <p className="text-gray-500 text-sm font-semibold uppercase">Total Food Item</p>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-6 rounded-2xl flex items-center gap-4 border border-gray-100">
+                <div className="text-4xl">🏪</div>
+                <div>
+                  <h4 className="text-2xl font-black text-slate-900">500+</h4>
+                  <p className="text-gray-500 text-sm font-semibold uppercase">Branch Office</p>
+                </div>
+              </div>
+            </div>
+
+            <button className="bg-red-600 text-white px-10 py-4 rounded-xl font-black uppercase italic tracking-widest hover:bg-slate-900 transition-colors shadow-lg shadow-red-200">
+              Read More
+            </button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
 
       {/* Featured Items - Modern Cards */}
       <section className="py-24 bg-slate-50">
@@ -151,7 +281,7 @@ export default function Home() {
       </section>
 
       <section className="relative bg-[#0a0a0a] min-h-[500px] flex items-center overflow-hidden py-20">
-      {/* ব্যাকগ্রাউন্ড টেক্সচার বা ডার্ক ইমেজ */}
+      {/*bg texture*/}
       <div className="absolute inset-0 opacity-40">
         <Image 
           src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80" 
@@ -164,17 +294,17 @@ export default function Home() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           
-          {/* টেক্সট এবং টাইমার পার্ট */}
+          {/* timer */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="md:w-1/2 text-white"
           >
-            <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 leading-none">
+            <h2 className="text-5xl  font-black uppercase italic tracking-tighter mb-8 leading-none">
               Get <span className="text-red-600">25%</span> <br /> Discount
             </h2>
 
-            {/* টাইমার গ্রিড */}
+            {/* timer grid */}
             <div className="flex gap-4 mb-10">
               {[
                 { label: 'Days', value: timeLeft.days },
@@ -202,13 +332,13 @@ export default function Home() {
             </motion.button>
           </motion.div>
 
-          {/* খাবার এবং প্রাইস বাবল পার্ট */}
+          {/* food and price part */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             className="md:w-1/2 relative flex justify-center items-center"
           >
-            {/* প্রাইস বাবল (Badge) */}
+            {/* (Badge) */}
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 3 }}
@@ -218,7 +348,7 @@ export default function Home() {
               <span className="text-xl">$10.99</span>
             </motion.div>
 
-            {/* মেইন ইমেজ (Burger/Combo) */}
+            {/*  (Burger/Combo) */}
             <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px]">
               <Image 
                 src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&q=80" 
@@ -228,7 +358,7 @@ export default function Home() {
               />
             </div>
 
-            {/* ডেকোরেটিভ ফ্রাইস বা অন্য এলিমেন্ট */}
+            
             <div className="absolute -right-10 top-20 hidden lg:block opacity-80 rotate-45">
               <Image src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&q=80" width={150} height={150} alt="fries" className="object-contain" />
             </div>
@@ -261,7 +391,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter leading-none"
+            className="text-5xl  font-black text-slate-900 uppercase tracking-tighter leading-none"
           >
             Introducing Our Culinary <br /> Masters
           </motion.h2>
@@ -341,9 +471,9 @@ export default function Home() {
               { name: 'Burgers', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400' },
               { name: 'Pizza', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400' },
               { name: 'Chicken', img: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400' },
-              { name: 'Sides', img: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400' },
-              { name: 'Wraps', img: 'https://images.unsplash.com/photo-1626700051175-656fc7bc30cc?w=400' },
-              { name: 'Drinks', img: 'https://images.unsplash.com/photo-1544145945-f904253d0c7b?w=400' },
+              { name: 'French Fries', img: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400' },
+              { name: 'Wraps', img: 'https://cdn.uengage.io/uploads/49314/image-957521-1723208395.jpeg' },
+              { name: 'Drinks', img: 'https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/strawberry_lemonade_63154_16x9.jpg' },
               { name: 'Desserts', img: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400' },
               { name: 'Salads', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400' }
             ].map((cat, idx) => (
@@ -363,18 +493,69 @@ export default function Home() {
       </section>
 
       {/* Call to Action - Immersive */}
-      <section className="py-20 bg-yellow-400">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="container mx-auto px-4 text-center"
+    <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://img.freepik.com/premium-photo/flying-burger-with-crispy-fries-cold-drink_1335264-595.jpg" 
+          alt="Delicious Burger Background" 
+          className="w-full h-full object-cover"
+        />
+        {/* Dark Gradient Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+      </div>
+
+      {/* Content Container */}
+      <div className="container mx-auto px-4 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="space-y-8"
         >
-          <h2 className="text-6xl font-black text-red-600 mb-8 uppercase tracking-tighter">Hungry yet?</h2>
-          <Link href="/items" className="bg-red-600 text-white px-12 py-6 rounded-full text-2xl font-black hover:bg-black transition-all shadow-xl inline-block">
-            LETS EAT! 🍴
-          </Link>
+          {/* Main Title */}
+          <h2 className="text-6xl  font-black text-white uppercase italic tracking-tighter leading-none">
+            Hungry <span className="text-yellow-400">yet?</span>
+          </h2>
+          
+          <p className="text-gray-300 text-xl md:text-2xl font-medium max-w-2xl mx-auto">
+            Your favorite meal is just a few clicks away. 
+            Fresh, hot, and delivered straight to your door!
+          </p>
+
+          {/* Action Button */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link 
+              href="/items" 
+              className="group bg-red-600 hover:bg-yellow-500 text-white hover:text-black px-12 py-6 rounded-full text-2xl font-black transition-all duration-300 shadow-[0_10px_40px_rgba(220,38,38,0.4)] inline-flex items-center gap-3 italic tracking-widest"
+            >
+              LET&apos;S EAT! 
+              <Utensils className="group-hover:rotate-12 transition-transform" size={28} />
+            </Link>
+          </motion.div>
         </motion.div>
-      </section>
+      </div>
+
+      {/* Decorative Food Elements (Optional Floating) */}
+      <motion.div 
+        animate={{ y: [0, -20, 0] }}
+        transition={{ repeat: Infinity, duration: 4 }}
+        className="absolute bottom-10 left-10 opacity-20 hidden lg:block"
+      >
+        <span className="text-8xl">🍕</span>
+      </motion.div>
+      <motion.div 
+        animate={{ y: [0, 20, 0] }}
+        transition={{ repeat: Infinity, duration: 5 }}
+        className="absolute top-10 right-10 opacity-20 hidden lg:block"
+      >
+        <span className="text-8xl">🍟</span>
+      </motion.div>
+    </section>
     </div>
   );
 }

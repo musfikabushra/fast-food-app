@@ -1,216 +1,150 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { MapPin, Phone, Mail, Clock, Send, Utensils } from 'lucide-react';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 4000);
-  };
-
   return (
-    <div className="min-h-screen bg-[#fffdfa] pt-20 pb-12">
-      <div className="container mx-auto px-4">
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter italic">
-            Get In <span className="text-red-600">Touch</span>
-          </h1>
-          <div className="h-2 w-24 bg-yellow-400 mx-auto mt-4 rounded-full" />
-          <p className="text-gray-500 mt-6 text-lg max-w-xl mx-auto">
-            Have a question about our menu, catering, or just want to say hi? We'd love to hear from you!
+    <div className="min-h-screen overflow-hidden">
+      {/* Hero Header Section */}
+      <section className="relative py-20 bg-[url('https://www.mashed.com/img/gallery/surprising-sides-you-can-find-at-almost-all-fast-food-restaurants/l-intro-1680842197.jpg')] bg-cover bg-center">
+        <div className="absolute inset-0  "></div>
+        <div className="container relative z-10 mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-center mb-4"
+          >
+            <span className="bg-red-600 p-3 rounded-full shadow-lg shadow-red-600/20">
+              <Utensils size={32} className="text-white" />
+            </span>
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-6xl md:text-7xl font-bold text-white uppercase italic tracking-tighter"
+          >
+            Get In <span className="text-yellow-400">Touch</span>
+          </motion.h1>
+          <p className="text-white mt-4 max-w-xl mx-auto text-lg">
+            Have a question about our secret sauce or a bulk order? We're here to help you satisfy those cravings!
           </p>
-        </motion.div>
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100">
+      <div className="container mx-auto px-4 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           
-          {/* Contact Information Sidebar (2/5 Cols) */}
-          <div className="lg:col-span-2 bg-slate-900 p-10 md:p-16 text-white flex flex-col justify-between relative overflow-hidden">
-            {/* Decorative element */}
-            <div className="absolute top-[-10%] right-[-10%] w-40 h-40 bg-red-600/20 rounded-full blur-3xl" />
-            
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-10 tracking-tight">Contact Information</h2>
-              
-              <div className="space-y-10">
-                <div className="flex items-start space-x-5">
-                  <span className="text-3xl">📍</span>
-                  <div>
-                    <h3 className="font-bold text-yellow-400 uppercase text-sm tracking-widest mb-1">Visit Us</h3>
-                    <p className="text-slate-300 leading-relaxed">123 Main Street, Foodville, CA 90210</p>
-                  </div>
-                </div>
+          {/* Left Column: Contact Info Cards */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 space-y-6"
+          >
+            <h2 className="text-4xl font-black uppercase italic tracking-tight mb-8">
+              Contact <span className="text-red-600 font-normal underline decoration-yellow-400">Details</span>
+            </h2>
 
-                <div className="flex items-start space-x-5">
-                  <span className="text-3xl">📞</span>
-                  <div>
-                    <h3 className="font-bold text-yellow-400 uppercase text-sm tracking-widest mb-1">Call Us</h3>
-                    <p className="text-slate-300 font-medium text-lg hover:text-white transition">
-                      <a href="tel:+1234567890">(123) 456-7890</a>
-                    </p>
-                  </div>
+            {[
+              { icon: MapPin, title: 'Our Kitchen', desc: '123 Food Street, Tasty City, TC 12345' },
+              { icon: Phone, title: 'Call Center', desc: '(555) 123-4567' },
+              { icon: Mail, title: 'Email Support', desc: 'hello@foodix.com' },
+              { icon: Clock, title: 'Cooking Hours', desc: 'Mon - Sun: 10:00 AM - 11:00 PM' },
+            ].map((item, index) => (
+              <div key={index} className="flex items-center p-6 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors group">
+                <div className="bg-yellow-400 p-4 rounded-2xl text-black mr-6 group-hover:rotate-12 transition-transform">
+                  <item.icon size={24} strokeWidth={3} />
                 </div>
-
-                <div className="flex items-start space-x-5">
-                  <span className="text-3xl">✉️</span>
-                  <div>
-                    <h3 className="font-bold text-yellow-400 uppercase text-sm tracking-widest mb-1">Email Us</h3>
-                    <p className="text-slate-300 truncate hover:text-white transition">
-                      <a href="mailto:info@fastfoodhaven.com">hello@fastfood.com</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-5">
-                  <span className="text-3xl">🕐</span>
-                  <div>
-                    <h3 className="font-bold text-yellow-400 uppercase text-sm tracking-widest mb-1">Working Hours</h3>
-                    <p className="text-slate-300 text-sm">Mon-Fri: 10am - 10pm</p>
-                    <p className="text-slate-300 text-sm">Sat-Sun: 11am - 11pm</p>
-                  </div>
+                <div>
+                  <p className="text-xs font-black text-gray-500 uppercase tracking-widest mb-1">{item.title}</p>
+                  <p className="text-xl font-bold italic">{item.desc}</p>
                 </div>
               </div>
-            </div>
+            ))}
+          </motion.div>
 
-            <div className="mt-12 pt-8 border-t border-slate-800 flex space-x-6 relative z-10">
-              {['FB', 'TW', 'IG', 'YT'].map((social) => (
-                <a key={social} href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 transition duration-300 font-bold text-xs">
-                  {social}
-                </a>
-              ))}
-            </div>
-          </div>
+          {/* Right Column: Premium Form */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7"
+          >
+            <div className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl text-black">
+              <h3 className="text-3xl font-black uppercase italic tracking-tight mb-8">
+                Send us a <span className="text-red-600">Message</span>
+              </h3>
+              
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-gray-400">Your Name</label>
+                  <input
+                    type="text"
+                    className="w-full px-6 py-4 bg-gray-100 border-none rounded-2xl focus:ring-4 focus:ring-yellow-400/20 transition-all placeholder:text-gray-400 font-bold"
+                    placeholder="John Doe"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-gray-400">Email Address</label>
+                  <input
+                    type="email"
+                    className="w-full px-6 py-4 bg-gray-100 border-none rounded-2xl focus:ring-4 focus:ring-yellow-400/20 transition-all placeholder:text-gray-400 font-bold"
+                    placeholder="john@example.com"
+                  />
+                </div>
 
-          {/* Contact Form (3/5 Cols) */}
-          <div className="lg:col-span-3 bg-white p-10 md:p-16">
-            <AnimatePresence mode="wait">
-              {submitted ? (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="h-full flex flex-col items-center justify-center text-center space-y-6"
+                <div className="md:col-span-2 space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-gray-400">Subject</label>
+                  <input
+                    type="text"
+                    className="w-full px-6 py-4 bg-gray-100 border-none rounded-2xl focus:ring-4 focus:ring-yellow-400/20 transition-all placeholder:text-gray-400 font-bold"
+                    placeholder="How can we help?"
+                  />
+                </div>
+
+                <div className="md:col-span-2 space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-gray-400">Your Message</label>
+                  <textarea
+                    rows={5}
+                    className="w-full px-6 py-4 bg-gray-100 border-none rounded-3xl focus:ring-4 focus:ring-yellow-400/20 transition-all placeholder:text-gray-400 font-bold resize-none"
+                    placeholder="Tell us about your order..."
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="md:col-span-2 bg-red-600 text-white py-5 rounded-2xl font-black uppercase italic tracking-widest shadow-xl shadow-red-600/20 hover:bg-black transition-all flex items-center justify-center gap-3 mt-4"
                 >
-                  <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-5xl animate-bounce">
-                    ✓
-                  </div>
-                  <h2 className="text-4xl font-black text-slate-900 uppercase">Message Sent!</h2>
-                  <p className="text-gray-500 text-lg">Our team will get back to you faster than our delivery!</p>
-                </motion.div>
-              ) : (
-                <motion.form 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  onSubmit={handleSubmit} 
-                  className="space-y-6"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-black uppercase tracking-widest text-slate-500 pl-1">Full Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition outline-none placeholder:text-slate-300 font-medium"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-black uppercase tracking-widest text-slate-500 pl-1">Email Address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition outline-none placeholder:text-slate-300 font-medium"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-black uppercase tracking-widest text-slate-500 pl-1">Phone Number</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition outline-none placeholder:text-slate-300 font-medium"
-                        placeholder="(123) 456-7890"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-black uppercase tracking-widest text-slate-500 pl-1">Subject</label>
-                      <select
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition outline-none font-medium appearance-none"
-                      >
-                        <option value="">Select a subject</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="catering">Catering Request</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-slate-500 pl-1">Your Message</label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={4}
-                      className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition outline-none placeholder:text-slate-300 font-medium resize-none"
-                      placeholder="Tell us everything..."
-                    />
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    className="w-full bg-red-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-red-200 hover:bg-slate-900 transition-all duration-300 uppercase tracking-widest italic"
-                  >
-                    Send Delicious Message 🚀
-                  </motion.button>
-                </motion.form>
-              )}
-            </AnimatePresence>
-          </div>
+                  Fire It Away <Send size={20} strokeWidth={3} />
+                </motion.button>
+              </form>
+            </div>
+          </motion.div>
         </div>
+
+        {/* Professional Google Maps integration style */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 rounded-[3rem] overflow-hidden border-8 border-white/5 shadow-2xl relative h-[450px]"
+        >
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937611493!2d-73.98731968459391!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1625500000000!5m2!1sen!2sus"
+            width="100%" 
+            height="100%" 
+            style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }} 
+            allowFullScreen 
+            loading="lazy"
+          ></iframe>
+          <div className="absolute top-10 left-10 bg-black p-6 rounded-3xl border border-white/10 shadow-2xl hidden md:block">
+            <p className="text-yellow-400 font-black uppercase tracking-tighter italic text-xl">Visit Our Hub 🔥</p>
+            <p className="text-gray-400 text-sm mt-1">See you soon!</p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -7,17 +7,24 @@ const PORT = process.env.PORT || 4000;
 
 // CORS configuration
 app.use(cors({
-  origin: [
-    'http://localhost:3000', 
-    'http://localhost:3001', 
-    'https://fast-food-app-xxxxx.vercel.app',
-    /^https:\/\/.*\.vercel\.app$/,
-    /^https:\/\/.*\.railway\.app$/
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://fast-food-app-green.vercel.app'
+    ];
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 app.use(bodyParser.json());
 
@@ -115,6 +122,7 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found' });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
