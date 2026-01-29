@@ -1,8 +1,8 @@
-# Fast Food App (Next.js App Router)
+# foodIX (Next.js App Router)
 
 ## Project Overview
 
-Fast Food App is a simple web application built using Next.js 15/16 (App Router). The project demonstrates public and protected routing, mock authentication, item listing, item details, and optional item creation functionality. The application follows modern Next.js best practices and is deployed on Vercel.
+foodIX is a simple web application built using Next.js 15/16 (App Router). The project demonstrates public and protected routing, mock authentication, item listing, item details, and optional item creation functionality. The application follows modern Next.js best practices and is deployed on Vercel.
 
 Live Site: [https://fast-food-app-green.vercel.app](https://fast-food-app-green.vercel.app)
 
